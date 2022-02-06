@@ -1,0 +1,15 @@
+apiVersion: v1
+  kind: Deployment
+  metadata:
+    name: forwarder-deployment
+    labels:
+      run: cforwarder
+  spec:
+    selector:
+      matchLabels:
+        app: cbroker
+      containers:
+        - name: cforwarder
+          image: ncpaxton01/cforwarder:latest
+    replicas: 1
+

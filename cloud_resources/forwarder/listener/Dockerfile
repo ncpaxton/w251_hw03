@@ -1,7 +1,10 @@
-FROM alpine:latest
+FROM ubuntu:latest
 ENV PYTHONUNBUFFERED=1
-RUN apk update && apk add -y python3 python3-pip
-RUN sudo apt install -y mosquitto-clients
+RUN apt-get update
+RUN apt-get install -y python3 python3-pip mosquitto-clients
+RUN pip3 install paho-mqtt
+RUN pip3 install numpy
+RUN pip3 install boto3
 
 COPY listener.py listener.py
 
