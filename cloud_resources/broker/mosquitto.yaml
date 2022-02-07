@@ -12,7 +12,8 @@ spec:
       labels:
         app: mosquitto
     spec:
-     # hostNetwork: true
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
       containers:
       - name: cbroker
         image: ncpaxton01/cbroker:latest

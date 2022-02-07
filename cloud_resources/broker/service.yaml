@@ -4,12 +4,12 @@ metadata:
   name: face-service
   labels:
     app: cbroker
-  spec:
-    type: NodePort
-    ports:
-    - nodePort: 32364
-      port: 1883
-      protocol: TCP
-      targetPort: 1883
-    selector:
-      app: cbroker
+spec:
+  type: NodePort
+  ports:
+  - nodePort: 32364
+    port: 1883
+    protocol: TCP
+    targetPort: 1883
+  selector:
+    app: cbroker

@@ -2,12 +2,12 @@ import paho.mqtt.client as mqtt
 import boto3
 from botocore.exceptions import ClientError
 import os
-import cv2
+#import cv2
 import numpy as np
 from datetime import datetime
 
 
-LOCAL_MQTT_HOST="localhost"
+LOCAL_MQTT_HOST="face-service"
 LOCAL_MQTT_PORT=1883
 LOCAL_MQTT_TOPIC="mypub"
 
@@ -42,6 +42,7 @@ def on_message(client, userdata, msg):
         #date_t = datetime.now().strftime('%m-%d-%Y-%H-%M-%S')
         #image_name = str(date_t) + '_image.png'
         # Save image
+        
         msg = msg.payload
         save_img(msg)
 
