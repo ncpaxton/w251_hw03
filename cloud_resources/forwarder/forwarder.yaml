@@ -15,5 +15,12 @@ spec:
       containers:
       - name: cforwarder
         image: ncpaxton01/cforwarder:latest
+        command: [ "sleep" ]
+        args: [ "infinity" ]
+        #imagePullPolicy: Never
+        #command: ["/bin/sh"]
+        #args: ["-c", "while true; do echo hello; sleep 10;done"]
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: true
   
 

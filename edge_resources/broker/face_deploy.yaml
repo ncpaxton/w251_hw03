@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mybroker-deployment
+spec:
+  selector:
+    matchLabels:
+      app: mybroker
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: mybroker
+    spec:
+      containers:
+      - name: mybroker
+        image: ncpaxton01/mybroker
+        ports:
+        - containerPort: 1883
