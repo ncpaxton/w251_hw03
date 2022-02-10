@@ -13,10 +13,12 @@ spec:
         app: mybroker
     spec:
       containers:
-      - name: forwarder
-        image: ncpaxton01/forwarder:latest
       - name: mylogger
         image: ncpaxton01/mylogger:latest
+      - name: forwarder
+        image: ncpaxton01/forwarder:latest
+      - name: capture
+        image: ncpaxton01/cappub:latest
         securityContext: 
           privileged: true
         volumeMounts:
