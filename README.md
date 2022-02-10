@@ -1,6 +1,18 @@
 # Homework 3 for Deep Learning at the Edge and in the Cloud
 This repo contains the introductory pipeline from a jetson edge device to an AWS cloud instance. The message fabric used to provide communication between the edge and cloud components is MQTT which is a well-known fabric for IoT communications. Docker containers were used to package all the components and the slim version of Kubernetes (k3s) to orchastrate the containers.
 
+## Commands used to run the project
+To run this project, you first have to navigate to the folders that contain the dockerfiles used to build the containers used for the components. The solution given in this repo utilizes kubernettes for both the cloud and the edge components, so once the containers are built, they need to be tagged and pushed to the docker.hub registery. Once the containers have all been uploaded in the registery they should be launched in this mannor:
+- Cloud Containers
+  - Broker: kubectl apply -f mosquitto.yaml
+  - Service: kubectl apply -f faceService.yaml
+  - Forwarder: kubectl apply -f forwarder.yaml
+  - Expose Port: kubectl expose deployment mosquitto-deployment --type=NodePort --port=1883 --name=cbroker
+- Edge Containers
+  - Broker: kubectl apply -f face_deploy.yaml
+  - Service: kubectl -f faceService.yaml
+  - Logger/forwarder/Capture: kubectl -f face_logger_deploy.yaml
+
 ## Edge Component Details
 - Jetson SUB Mini PC-Blue, with Jetson Xavier NX module
 - Container 1 (Alpine Base): MQTT Broker
@@ -27,9 +39,9 @@ QoS 2 guarantees that the message is received once. It is the safest, but the sl
 
 In this pipeline we used the QoS 0 level which did not provide a guarantee.
 
-# Links to S3 Bucket Images
+## Links to S3 Bucket Images
 Here are a few links to face images sent to S3
-- s3://nphw3/imagesf4ff36af-94ed-497d-bb22-98fcac4c4645.png
-- s3://nphw3/imagesf4715924-e505-4515-b918-9ed23da3b0ea.png
-- s3://nphw3/imagese52471a3-b143-409e-bfc7-f4437584cf5d.png
+- https://nphw3.s3.amazonaws.com/imagesf4ff36af-94ed-497d-bb22-98fcac4c4645.png
+- https://nphw3.s3.amazonaws.com/imagesf4715924-e505-4515-b918-9ed23da3b0ea.png
+- https://nphw3.s3.amazonaws.com/imagese52471a3-b143-409e-bfc7-f4437584cf5d.png
 
