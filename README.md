@@ -10,8 +10,8 @@ To run this project, you first have to navigate to the folders that contain the 
   - Expose Port: kubectl expose deployment mosquitto-deployment --type=NodePort --port=1883 --name=cbroker
 - Edge Containers
   - Broker: kubectl apply -f face_deploy.yaml
-  - Service: kubectl -f faceService.yaml
-  - Logger/forwarder/Capture: kubectl -f face_logger_deploy.yaml
+  - Service: kubectl apply -f faceService.yaml
+  - Logger/forwarder/Capture: kubectl apply -f face_logger_deploy.yaml
 
 ## Edge Component Details
 - Jetson SUB Mini PC-Blue, with Jetson Xavier NX module
